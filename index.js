@@ -30,8 +30,8 @@ app.post('/checkout', async(req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: lineItems,
     mode: 'payment',
-    success_url: 'https://getem-merch.netlify.app/success',
-    cancel_url: 'https://getem-merch.netlify.app/cancel',
+    success_url: process.env.SUCCESS_URL,
+    cancel_url: process.env.CANCEL_URL,
   })
 
   res.send(JSON.stringify({
